@@ -2,8 +2,9 @@
 
     <xsl:template match="/root" name="wurui.mystock">
         <xsl:param name="link_add"/>
+        <xsl:param name="qs">symbol</xsl:param>
         <!-- className 'J_OXMod' required  -->
-        <div class="J_OXMod oxmod-mystock" ox-mod="mystock">
+        <div class="J_OXMod oxmod-mystock" ox-mod="mystock" data-qs="{$qs}">
 
             <xsl:choose>
                 <xsl:when test="count(data/user-rel/i/rel/i) &gt; 0">
@@ -11,7 +12,7 @@
 
                         <tbody>
                             <xsl:for-each select="data/user-rel/i/rel/i">
-                                <tr data-href="#{normalize-space(.)}" data-symbol="{normalize-space(.)}">
+                                <tr data-href="{normalize-space(.)}" data-symbol="{normalize-space(.)}">
                                     <td><xsl:value-of select="."/></td>
                                     <td>
                                         <span class="J_close"></span>
